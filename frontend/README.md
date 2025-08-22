@@ -1,12 +1,58 @@
-# React + Vite
+MERN Todo App with Authentication
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple MERN stack Todo application that allows users to sign up, log in, and manage their todos. Each user has their own todos, secured with JWT authentication.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Project Struture
+----------------
 
-## Expanding the ESLint configuration
+mern-todo-app/
+│── backend/
+│   ├── models/
+│   │   ├── User.js
+│   │   └── Todo.js
+│   ├── routes/
+│   │   ├── auth.js
+│   │   └── todo.js
+│   ├── server.js
+│   └── .env
+│
+│── frontend/
+│   ├── src/
+│   │   ├── pages/
+│   │   │   ├── Login.jsx
+│   │   │   ├── Signup.jsx
+│   │   │   └── Todos.jsx
+│   │   └── App.jsx
+│   ├── package.json
+│   └── ...
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+
+Tech Stack
+
+Frontend: React, React Router, Axios, Bootstrap
+Backend: Node.js, Express.js, MongoDB, Mongoose
+Authentication: JWT, bcryptjs
+Other: dotenv, cors
+
+
+API Endpoints
+🔑 Auth Routes
+
+POST /api/auth/signup → Register new user
+POST /api/auth/login → Login user, returns JWT
+
+📝 Todo Routes (Protected: JWT required in Authorization header)
+
+GET /api/todos → Fetch all todos of logged-in user
+POST /api/todos → Add new todo
+PUT /api/todos/:id → Update todo
+DELETE /api/todos/:id → Delete todo
+
+Features
+
+User Signup & Login with JWT authentication
+Password hashing using bcryptjs
+Add, Edit, Delete, Mark Completed todos
+User-specific todos (each user sees only their todos)
